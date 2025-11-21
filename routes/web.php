@@ -22,6 +22,8 @@ Route::post('/register',[AuthController::class, 'register'])->name('register.pos
 Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
     Route::get('/public/ormawa/{slug}/structure', [App\Http\Controllers\HomeController::class, 'ormawaStructure'])->name('public.ormawa.structure');
 
+Route::get('/berita', [App\Http\Controllers\NewsController::class, 'publicIndex'])->name('public.news.index');
+Route::get('/berita/{slug}', [App\Http\Controllers\NewsController::class, 'publicShow'])->name('public.news.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -41,6 +43,14 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/organization/{member}', [App\Http\Controllers\OrganizationMemberController::class, 'update'])->name('organization.update');
     Route::delete('/organization/{member}', [App\Http\Controllers\OrganizationMemberController::class, 'destroy'])->name('organization.destroy');
     
+     Route::get('/news', [App\Http\Controllers\NewsController::class, 'index'])->name('news.index');
+    Route::get('/news/create', [App\Http\Controllers\NewsController::class, 'create'])->name('news.create');
+    Route::post('/news', [App\Http\Controllers\NewsController::class, 'store'])->name('news.store');
+    Route::get('/news/{news}', [App\Http\Controllers\NewsController::class, 'show'])->name('news.show');
+    Route::get('/news/{news}/edit', [App\Http\Controllers\NewsController::class, 'edit'])->name('news.edit');
+    Route::patch('/news/{news}', [App\Http\Controllers\NewsController::class, 'update'])->name('news.update');
+    Route::delete('/news/{news}', [App\Http\Controllers\NewsController::class, 'destroy'])->name('news.destroy');
+    Route::post('/news/{news}/publish', [App\Http\Controllers\NewsController::class, 'publish'])->name('news.publish');
     
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

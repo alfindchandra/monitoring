@@ -20,7 +20,7 @@
                 <div class="col-span-2 p-10 md:p-12">
                     <span class="inline-block bg-primary-100 text-primary-800 text-sm font-semibold px-4 py-1 rounded-full mb-4">Fokus Utama</span>
                     <h2 class="text-4xl font-bold text-gray-900 mb-6">Badan Eksekutif Mahasiswa</h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">{{ $bem->description }}</p>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">{{ Str::words($bem->description, 20, '...') }}</p>
                     
                     @if(isset($bem->vision))
                     <div class="mb-8 p-4 bg-primary-50 rounded-xl border-l-4 border-primary-600">

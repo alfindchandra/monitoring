@@ -59,10 +59,8 @@
                     <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
                 </a>
 
-                <a href="{{ route('public.announcements') }}" 
-                   class="relative group text-gray-700 hover:text-primary-600 transition">
-                    Pengumuman
-                    <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+                <a href="{{ route('public.news.index')}}" class="relative group text-gray-700 hover:text-primary-600 transition">
+                    Berita <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary-600 transition-all duration-300 group-hover:w-full"></span >
                 </a>
 
                 @auth

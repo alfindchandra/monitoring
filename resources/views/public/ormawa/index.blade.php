@@ -57,7 +57,7 @@
                 {{-- Detail & Deskripsi Column --}}
                 <div class="md:w-2/3 p-10">
                     <p class="text-gray-700 mb-6 leading-relaxed text-lg italic border-l-4 border-blue-500 pl-4">
-                        "{{ Str::limit($bem->description, 250) }}"
+                        "{{ Str::limit($bem->description, 20) }}" 
                     </p>
                     
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
@@ -132,7 +132,7 @@
         @if(count($ukms) > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
             @foreach($ukms as $ukm)
-            <div class="ukm-card bg-white rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 overflow-hidden">
+            <div class="ukm-card bg-white rounded-3xl border border-gray-100 shadow-lg hover:shadow-xl transition duration-300 transform hover:-translate-y-1 overflow-hidden">
                 {{-- Header Card UKM yang Lebih Menarik --}}
                 <div class="bg-gradient-to-br from-blue-500 to-blue-700 p-8 text-center relative">
                     @if($ukm->logo)
@@ -149,7 +149,7 @@
                 <div class="p-6">
                     {{-- Deskripsi Ringkas --}}
                     <p class="text-gray-600 text-sm mb-4 line-clamp-3 min-h-[4.5rem]">
-                        {{ $ukm->description }}
+                        {{ Str::words($ukm->description, 20, '...') }}
                     </p>
                     
                     {{-- Detail Pendirian --}}

@@ -99,4 +99,16 @@ public function currentMembers()
 {
     return $this->hasMany(OrganizationMember::class)->active()->currentPeriod();
 }
+public function news()
+{
+    return $this->hasMany(News::class);
+}
+
+public function publishedNews()
+{
+    return $this->hasMany(News::class)->published()->latest('published_at');
+}
+
+
+
 }
