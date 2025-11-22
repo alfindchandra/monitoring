@@ -7,6 +7,7 @@ use App\Http\Controllers\OrmawaController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PhotoController;
 use Illuminate\Support\Facades\Route;
 
 // Public Routes
@@ -25,8 +26,15 @@ Route::post('/logout',[AuthController::class, 'logout'])->name('logout');
 Route::get('/berita', [App\Http\Controllers\NewsController::class, 'publicIndex'])->name('public.news.index');
 Route::get('/berita/{slug}', [App\Http\Controllers\NewsController::class, 'publicShow'])->name('public.news.show');
 
+Route::get('/galeri', [PhotoController::class, 'publicGallery'])->name('gallery.index');
+Route::get('/galeri/{photo}', [PhotoController::class, 'publicShow'])->name('gallery.show');
+
+
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('photos', PhotoController::class);
+    Route::get('photos/album/{album}', [PhotoController::class, 'album'])->name('photos.album');
+    Route::get('photos/{photo}/download', [PhotoController::class, 'download'])->name('photos.download');
 
      Route::get('/divisions', [App\Http\Controllers\DivisionController::class, 'index'])->name('divisions.index');
     Route::get('/divisions/create', [App\Http\Controllers\DivisionController::class, 'create'])->name('divisions.create');
@@ -67,8 +75,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('activities', ActivityController::class);
     
     // Admin Only Routes
-    Route::middleware(['role:admin'])->group(function () {
-        Route::resource('ormawas', OrmawaController::class);
+    Route::middleware(['role:admin,ketua_bem'])->group(function () {
+    Route::resource('ormawas', OrmawaController::class);
         Route::get('pengumumans', [App\Http\Controllers\AnnouncementController::class, 'manageAdmins'])->name('pengumumans.index');
         Route::patch('/ormawas/{ormawa}/toggle-status', [OrmawaController::class, 'toggleStatus'])->name('ormawas.toggle-status');
         

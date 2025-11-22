@@ -63,6 +63,12 @@
                     Berita <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary-600 transition-all duration-300 group-hover:w-full"></span >
                 </a>
 
+                <a href="{{ route('gallery.index') }}" 
+                   class="relative group text-gray-700 hover:text-primary-600 transition">
+                    Foto
+                    <span class="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary-600 transition-all duration-300 group-hover:w-full"></span>
+                </a>
+
                 @auth
                     <a href="{{ route('dashboard') }}" 
                        class="px-5 py-2 rounded-full bg-primary-600 text-white hover:bg-primary-700 shadow-md hover:shadow-lg transition-all">

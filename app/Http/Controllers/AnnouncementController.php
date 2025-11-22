@@ -14,12 +14,15 @@ class AnnouncementController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        
+        if ($user->role === 'admin') {
+       
+         $announcements = Announcement::latest()->paginate(9);
+    } else {
         $announcements = Announcement::with(['ormawa', 'recipients'])
             ->where('ormawa_id', $user->ormawa_id)
             ->latest()
             ->paginate(10);
-        
+    }
         return view('announcements.index', compact('announcements'));
     }
 

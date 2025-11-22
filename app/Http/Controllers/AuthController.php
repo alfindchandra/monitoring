@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
+    
     public function showLogin()
     {
         return view('auth.login');
@@ -30,9 +32,9 @@ class AuthController extends Controller
         if ($user->role === 'admin') {
             return redirect()->intended('dashboard');
         } elseif ($user->role === 'ketua_bem') {
-            return redirect()->intended('bem/dashboard');
+            return redirect()->intended('dashboard');
         } else {
-            return redirect()->intended('/dashboard'); 
+            return redirect()->intended('dashboard'); 
         }
         
         

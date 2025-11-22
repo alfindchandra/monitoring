@@ -15,7 +15,7 @@
                     <a href="{{ route('public.ormawa') }}" class="bg-white text-primary-700 hover:bg-primary-100 px-10 py-3 rounded-full text-lg font-bold transition duration-300 shadow-xl transform hover:scale-105">
                         Lihat Semua ORMAWA
                     </a>
-                    <a href="" class="bg-primary-500 border border-primary-500 hover:bg-primary-400 px-10 py-3 rounded-full text-lg font-bold transition duration-300 shadow-xl transform hover:scale-105">
+                    <a href="{{ route('public.activitie') }}" class="bg-primary-500 border border-primary-500 hover:bg-primary-400 px-10 py-3 rounded-full text-lg font-bold transition duration-300 shadow-xl transform hover:scale-105">
                         Kegiatan Terkini →
                     </a>
                 </div>

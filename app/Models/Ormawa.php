@@ -108,7 +108,25 @@ public function publishedNews()
 {
     return $this->hasMany(News::class)->published()->latest('published_at');
 }
+public function photos()
+{
+    return $this->hasMany(Photo::class);
+}
 
+public function publicPhotos()
+{
+    return $this->hasMany(Photo::class)->public()->ordered();
+}
 
+public function featuredPhotos()
+{
+    return $this->hasMany(Photo::class)->public()->featured()->take(6);
+}
+
+// Method to get photo count
+public function getPhotoCountAttribute()
+{
+    return $this->photos()->count();
+}
 
 }

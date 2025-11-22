@@ -24,16 +24,13 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-900 mb-3 leading-snug hover:text-primary-700 transition duration-200">{{ $activity->title }}</h3>
                     <p class="text-gray-600 mb-4 line-clamp-3">{{ $activity->description }}</p>
-                    <a href="" class="text-primary-600 hover:text-primary-700 font-semibold inline-flex items-center">
-                        Baca Selengkapnya
-                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7M10 12H3"/></svg>
-                    </a>
+                    
                 </div>
             </article>
             @endforeach
         </div>
         <div class="text-center mt-16">
-            <a href="" class="text-lg font-semibold text-gray-700 hover:text-primary-700 border-b-2 border-gray-300 hover:border-primary-700 transition duration-300">
+            <a href="{{ route('public.activitie') }}" class="text-lg font-semibold text-gray-700 hover:text-primary-700 border-b-2 border-gray-300 hover:border-primary-700 transition duration-300">
                 Lihat Semua Kegiatan (Link ke halaman Kegiatan)
             </a>
         </div>

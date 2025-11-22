@@ -4,6 +4,8 @@
 
 @section('content')
 <div class="space-y-6">
+ @if(auth()->user()->isKetuaBem() || auth()->user()->isKetuaUkm())
+
     <div class="flex items-center justify-between">
         <div>
             <h1 class="text-3xl font-bold text-gray-900">Pengumuman Saya</h1>
@@ -16,6 +18,7 @@
             Buat Pengumuman
         </a>
     </div>
+    @endif
 
     <div class="card">
         @if($announcements->count() > 0)
@@ -66,6 +69,14 @@
                                 <a href="{{ route('announcements.show', $announcement) }}" class="text-primary-600 hover:text-primary-700">
                                     Lihat
                                 </a>
+                                <form action="{{ route('announcements.destroy', $announcement) }}" method="POST" 
+                              onsubmit="return confirm('Hapus kegiatan ini?')">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="text-red-600 hover:text-red-700">
+                                Hapus
+                            </button>
+                        </form>
                                 @if($announcement->status === 'draft')
                                 <a href="{{ route('announcements.edit', $announcement) }}" class="text-blue-600 hover:text-blue-700">
                                     Edit

@@ -11,16 +11,18 @@ class RoleMiddleware
     /**
      * Handle an incoming request.
      */
-    public function handle(Request $request, Closure $next, string $role): Response
-    {
-        if (!$request->user()) {
-            return redirect()->route('login');
-        }
-
-        if ($request->user()->role !== $role) {
-            abort(403, 'Unauthorized action.');
-        }
-
-        return $next($request);
+   public function handle(Request $request, Closure $next, ...$roles): Response
+{
+    if (!$request->user()) {
+        return redirect()->route('login');
     }
+
+    // Cek apakah role user ada di dalam list parameter role
+    if (!in_array($request->user()->role, $roles)) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    return $next($request);
+}
+
 }

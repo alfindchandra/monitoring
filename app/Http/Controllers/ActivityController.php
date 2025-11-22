@@ -11,12 +11,15 @@ class ActivityController extends Controller
     public function index(Request $request)
     {
         $user = $request->user();
-        
+        if ($user->role === 'admin') {
+        // Admin lihat semua kegiatan
+        $activities = Activity::latest()->paginate(9);
+    } else {
         $activities = Activity::with('ormawa')
             ->where('ormawa_id', $user->ormawa_id)
             ->latest()
             ->paginate(10);
-        
+    }
         return view('activities.index', compact('activities'));
     }
 

@@ -4,6 +4,8 @@
 
 @section('content')
 <div class="space-y-6">
+ @if(auth()->user()->isKetuaBem() || auth()->user()->isKetuaUkm())
+
     <div class="flex items-center justify-between">
         <div>
             <h1 class="text-3xl font-bold text-gray-900">Struktur Organisasi</h1>
@@ -16,6 +18,7 @@
             Tambah Anggota
         </a>
     </div>
+    @endif
 
     {{-- Inti Kepengurusan --}}
     <div class="card">

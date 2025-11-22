@@ -4,8 +4,10 @@
 
 @section('content')
 <div class="space-y-6">
-    <div class="flex items-center justify-between">
-        <div>
+ @if(auth()->user()->isKetuaBem() || auth()->user()->isKetuaUkm())
+     <div class="flex items-center justify-between">
+
+         <div>
             <h1 class="text-3xl font-bold text-gray-900">Kelola Kegiatan</h1>
             <p class="text-gray-600 mt-1">Kegiatan {{ auth()->user()->ormawa->name }}</p>
         </div>
@@ -16,6 +18,7 @@
             Tambah Kegiatan
         </a>
     </div>
+    @endif
 
     <div class="card">
         @if($activities->count() > 0)
